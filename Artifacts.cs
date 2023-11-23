@@ -1,6 +1,6 @@
 ﻿namespace IceCreamTruck.Artifacts
 {
-    [ArtifactMeta(owner = Deck.colorless, pools = new ArtifactPool[] { ArtifactPool.EventOnly })]
+    [ArtifactMeta(owner = Deck.colorless, pools = new ArtifactPool[] { ArtifactPool.Boss })]
     public class IceCreamArtifact : Artifact
     {
         public int iceCreamEnergy;
