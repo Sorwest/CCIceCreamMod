@@ -230,9 +230,12 @@ namespace IceCreamTruck
         public void LoadManifest(IArtifactRegistry registry)
         {
             {
-                IceCreamArtifact = new ExternalArtifact("JohannaTheTrucker.Artifacts.IceCreamArtifact", typeof(IceCreamArtifact), IceCreamArtifact_Sprite ?? throw new Exception("missing icecream sprite"), ownerDeck: IceCreamTruckDeck ?? throw new Exception("missing icecreamtruck deck."));
+                IceCreamArtifact = new ExternalArtifact("IceCreamTruck.Artifacts.IceCreamArtifact", 
+                    typeof(IceCreamArtifact), 
+                    IceCreamArtifact_Sprite ?? throw new Exception("missing icecream sprite"));
 
-                IceCreamArtifact.AddLocalisation("ICE CREAM", "Unused <c=energy>ENERGY</c> is regained at the beginning of the next turn.");
+                IceCreamArtifact.AddLocalisation("ICE CREAM", 
+                    "Unused <c=energy>ENERGY</c> is regained at the beginning of the next turn.");
 
                 registry.RegisterArtifact(IceCreamArtifact);
             }
