@@ -13,8 +13,6 @@ The Ice Cream Ship starts the loop with a vanilla cockpit and delicious wings, a
 ![image](https://i.imgur.com/yMDRiDk.png)
 Enjoy flying through space with your favorite snack, the Ice Cream allows players to conserve energy for later use. Sweet!
 
-(The artifact should be available as a Boss reward)
-
 ## Future Features
 No features in WIP.
 Possibilities: Ice Cream Artifact v2, FOXLAD character
