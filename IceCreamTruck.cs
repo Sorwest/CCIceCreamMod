@@ -4,7 +4,6 @@ using CobaltCoreModding.Definitions.ModContactPoints;
 using CobaltCoreModding.Definitions.ModManifests;
 using IceCreamTruck.Artifacts;
 using Microsoft.Extensions.Logging;
-using System.Reflection;
 namespace IceCreamTruck
 {
     public partial class Manifest :
@@ -24,14 +23,6 @@ namespace IceCreamTruck
         private static System.Drawing.Color IceCreamTruck_Primary_Color = System.Drawing.Color.FromArgb(255, 143, 171);
         public static ExternalArtifact? IceCreamArtifact { get; private set; }
         public static ExternalDeck? IceCreamTruckDeck { get; private set; }
-        //public static ExternalCharacter? IceCreamTruck_Character { get; private set; }
-        //public static ExternalAnimation? IceCreamTruck_CharacterDefaultAnimation { get; private set; }
-        //public static ExternalAnimation? IceCreamTruck_CharacterMiniAnimation { get; private set; }
-        //public static ExternalAnimation? IceCreamTruck_GameoverCharacterAnimation { get; private set; }
-        //public static ExternalSprite? IceCreamTruck_CharacterMini_Sprite { get; private set; }
-        //public static ExternalSprite? IceCreamTruck_CharacterPortrait_Sprite { get; private set; }
-        //public static ExternalSprite? IceCreamTruck_CardFrame { get; private set; }
-        //public static ExternalSprite? IceCreamTruck_CharacterPanelFrame { get; private set; }
         public static ExternalSprite? IceCreamTruck_CardFrame { get; private set; }
         public static ExternalSprite? IceCreamArtifact_Sprite { get; private set; }
         public static ExternalSprite? IceCreamTruck_Cannon_Melted0_Sprite { get; private set; }
@@ -188,30 +179,12 @@ namespace IceCreamTruck
                 artRegistry.RegisterArt(IceCreamArtifact_Sprite);
             }
 
-            
+
             //deck
             {
                 var path = Path.Combine(ModRootFolder.FullName, "Sprites", Path.GetFileName("IceCreamTruck_CardFrame.png"));
                 IceCreamTruck_CardFrame = new ExternalSprite("IceCreamTruck.sprites.IceCreamTruck_CardFrame", new FileInfo(path));
                 artRegistry.RegisterArt(IceCreamTruck_CardFrame);
-            }
-
-            
-            //character
-            {
-            //    var path = Path.Combine(ModRootFolder.FullName, "Sprites", Path.GetFileName("IceCreamTruck_CharacterPortrait_Sprite.png"));
-            //    IceCreamTruck_CharacterPortrait_Sprite = new ExternalSprite("IceCreamTruck.sprites.IceCreamTruck_CharacterPortrait_Sprite", new FileInfo(path));
-            //    artRegistry.RegisterArt(IceCreamTruck_CharacterPortrait_Sprite);
-            }
-            {
-            //    var path = Path.Combine(ModRootFolder.FullName, "Sprites", Path.GetFileName("IceCreamTruck_CharacterMini_Sprite.png"));
-            //    IceCreamTruck_CharacterMini_Sprite = new ExternalSprite("IceCreamTruck.sprites.IceCreamTruck_CharacterMini_Sprite", new FileInfo(path));
-            //    artRegistry.RegisterArt(IceCreamTruck_CharacterMini_Sprite);
-            }
-            {
-            //    var path = Path.Combine(ModRootFolder.FullName, "Sprites", Path.GetFileName("IceCreamTruck_CharacterPanelFrame.png"));
-            //    IceCreamTruck_CharacterPanelFrame = new ExternalSprite("IceCreamTruck.sprites.IceCreamTruck_CharacterPanelFrame", new FileInfo(path));
-            //    artRegistry.RegisterArt(IceCreamTruck_CharacterPanelFrame);
             }
         }
         public void LoadManifest(IDeckRegistry registry)
@@ -230,50 +203,16 @@ namespace IceCreamTruck
         public void LoadManifest(IArtifactRegistry registry)
         {
             {
-                IceCreamArtifact = new ExternalArtifact("IceCreamTruck.Artifacts.IceCreamArtifact", 
-                    typeof(IceCreamArtifact), 
+                IceCreamArtifact = new ExternalArtifact("IceCreamTruck.Artifacts.IceCreamArtifact",
+                    typeof(IceCreamArtifact),
                     IceCreamArtifact_Sprite ?? throw new Exception("missing icecream sprite"));
 
-                IceCreamArtifact.AddLocalisation("ICE CREAM", 
+                IceCreamArtifact.AddLocalisation("ICE CREAM",
                     "Unused <c=energy>ENERGY</c> is regained at the beginning of the next turn.");
 
                 registry.RegisterArtifact(IceCreamArtifact);
             }
         }
-        //void ICharacterManifest.LoadManifest(ICharacterRegistry registry)
-        //{
-        //    IceCreamTruck_Character = new ExternalCharacter("IceCreamTruck.Character.FOXLAD",
-        //        IceCreamTruckDeck ?? throw new Exception("Missing Deck"),
-        //        IceCreamTruck_CharacterPanelFrame ?? throw new Exception("Missing Portrait"),
-        //        new Type[] { typeof(BasicShieldColorless), typeof(CannonColorless) },
-        //        new Type[0],
-        //    IceCreamTruck_CharacterDefaultAnimation ?? throw new Exception("missing default animation"),
-        //    IceCreamTruck_CharacterMiniAnimation ?? throw new Exception("missing mini animation"));
-        //    IceCreamTruck_Character.AddNameLocalisation("FOXLAD");
-        //    IceCreamTruck_Character.AddDescLocalisation("<c=riggs>FOXLAD</c>\nAn old friend of Drake, Fox Lad wants to break free from the loop and discover new flavors.");
-        //    registry.RegisterCharacter(IceCreamTruck_Character);
-        //}
-
-        //void IAnimationManifest.LoadManifest(IAnimationRegistry registry)
-        //{
-        //    IceCreamTruck_CharacterDefaultAnimation = new ExternalAnimation("IceCreamTruck.Animation.IceCreamTruck_CharacterDefaultAnimation",
-        //        IceCreamTruckDeck ?? throw new Exception("missing deck"),
-        //        "neutral", false,
-        //        new ExternalSprite[] { IceCreamTruck_CharacterPortrait_Sprite ?? throw new Exception("missing portrait") });
-        //    registry.RegisterAnimation(IceCreamTruck_CharacterDefaultAnimation);
-
-        //    IceCreamTruck_CharacterMiniAnimation = new ExternalAnimation("IceCreamTruck.Animation.JohannaMini",
-        //        IceCreamTruckDeck ?? throw new Exception("missing deck"),
-        //        "mini", false,
-        //        new ExternalSprite[] { IceCreamTruck_CharacterMini_Sprite ?? throw new Exception("missing mini") });
-        //    registry.RegisterAnimation(IceCreamTruck_CharacterMiniAnimation);
-
-        //    IceCreamTruck_GameoverCharacterAnimation = new ExternalAnimation("IceCreamTruckTheTrucker.Animation.GameOver",
-        //        IceCreamTruckDeck ?? throw new Exception("missing deck"),
-        //        "gameover", false,
-        //        IceCreamTruck_CharacterPortrait_Sprite);
-        //    registry.RegisterAnimation(IceCreamTruck_GameoverCharacterAnimation);
-        //}
         public void LoadManifest(IShipPartRegistry registry)
         {
             IceCreamTruck_Cannon_Melted0 = new ExternalPart("IceCreamTruck.Parts.IceCreamTruckCannon_Melted0",
@@ -281,7 +220,7 @@ namespace IceCreamTruck
                 {
                     active = true,
                     type = PType.cannon
-                }, 
+                },
                 IceCreamTruck_Cannon_Melted0_Sprite ?? throw new Exception());
             IceCreamTruck_Cannon_Melted1 = new ExternalPart("IceCreamTruck.Parts.IceCreamTruckCannon_Melted1",
                 new Part()
@@ -295,7 +234,7 @@ namespace IceCreamTruck
                 {
                     active = true,
                     type = PType.cannon
-                }, 
+                },
                 IceCreamTruck_Cannon_Melted2_Sprite ?? throw new Exception());
             IceCreamTruck_Cannon_Melted3 = new ExternalPart("IceCreamTruck.Parts.IceCreamTruckCannon_Melted3",
                 new Part()
@@ -308,8 +247,8 @@ namespace IceCreamTruck
             IceCreamTruck_MissileBay_Melted0 = new ExternalPart("IceCreamTruck.Parts.IceCreamTruckMissileBay_Melted0",
                 new Part()
                 {
-                active = true,
-                type = PType.missiles
+                    active = true,
+                    type = PType.missiles
                 },
                 IceCreamTruck_MissileBay_Melted0_Sprite ?? throw new Exception());
             IceCreamTruck_MissileBay_Melted1 = new ExternalPart("IceCreamTruck.Parts.IceCreamTruckMissileBay_Melted1",
