@@ -9,7 +9,7 @@ namespace IceCreamTruck
     public partial class Manifest :
     ISpriteManifest,
     IManifest,
-    IDeckManifest,
+    //IDeckManifest,
     //ICharacterManifest,
     //IAnimationManifest,
     //IStatusManifest,
@@ -22,8 +22,6 @@ namespace IceCreamTruck
         public ILogger? Logger { get; set; }
         private static System.Drawing.Color IceCreamTruck_Primary_Color = System.Drawing.Color.FromArgb(255, 143, 171);
         public static ExternalArtifact? IceCreamArtifact { get; private set; }
-        public static ExternalDeck? IceCreamTruckDeck { get; private set; }
-        public static ExternalSprite? IceCreamTruck_CardFrame { get; private set; }
         public static ExternalSprite? IceCreamArtifact_Sprite { get; private set; }
         public static ExternalSprite? IceCreamTruck_Cannon_Melted0_Sprite { get; private set; }
         public static ExternalSprite? IceCreamTruck_Cannon_Melted1_Sprite { get; private set; }
@@ -178,27 +176,6 @@ namespace IceCreamTruck
                 IceCreamArtifact_Sprite = new ExternalSprite("IceCreamTruck.sprites.IceCreamArtifact_Sprite", new FileInfo(path));
                 artRegistry.RegisterArt(IceCreamArtifact_Sprite);
             }
-
-
-            //deck
-            {
-                var path = Path.Combine(ModRootFolder.FullName, "Sprites", Path.GetFileName("IceCreamTruck_CardFrame.png"));
-                IceCreamTruck_CardFrame = new ExternalSprite("IceCreamTruck.sprites.IceCreamTruck_CardFrame", new FileInfo(path));
-                artRegistry.RegisterArt(IceCreamTruck_CardFrame);
-            }
-        }
-        public void LoadManifest(IDeckRegistry registry)
-        {
-            ExternalSprite cardArtDefault = ExternalSprite.GetRaw((int)Spr.cards_colorless);
-            ExternalSprite borderSprite = IceCreamTruck_CardFrame ?? throw new Exception();
-            IceCreamTruckDeck = new ExternalDeck(
-                "IceCreamTruck.IceCreamTruckDeck",
-              IceCreamTruck_Primary_Color,
-                System.Drawing.Color.Black,
-                cardArtDefault,
-                borderSprite,
-                null);
-            registry.RegisterDeck(IceCreamTruckDeck);
         }
         public void LoadManifest(IArtifactRegistry registry)
         {
@@ -427,7 +404,7 @@ namespace IceCreamTruck
                 new Type[] { typeof(CannonColorless), typeof(CannonColorless), typeof(BasicShieldColorless) },
                 new Type[] { typeof(ShieldPrep)
                 });
-            IceCreamTruck_StarterShip.AddLocalisation("IceCream Truck", "FOXLAD's dream home, it serves delicious snacks.");
+            IceCreamTruck_StarterShip.AddLocalisation("IceCream Truck", "Scoop and eat, it's an ice cream ship!");
             registry.RegisterStartership(Manifest.IceCreamTruck_StarterShip);
         }
     }
