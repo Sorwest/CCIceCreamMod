@@ -172,7 +172,7 @@ namespace IceCreamTruck
             //artifacts
 
             {
-                var path = Path.Combine(ModRootFolder.FullName, "Sprites", Path.GetFileName("IceCreamArtifact_Sprite.png"));
+                var path = Path.Combine(ModRootFolder.FullName, "Sprites", Path.GetFileName("IceCreamTruck_IceCreamArtifact_Sprite.png"));
                 IceCreamArtifact_Sprite = new ExternalSprite("IceCreamTruck.sprites.IceCreamArtifact_Sprite", new FileInfo(path));
                 artRegistry.RegisterArt(IceCreamArtifact_Sprite);
             }

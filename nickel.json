@@ -1,0 +1,13 @@
+{
+	"UniqueName": "Sorwest.IceCreamTruck",
+	"Version": "2.1.2",
+	"RequiredApiVersion": "0.1.0",
+	"ModType": "Nickel.Legacy",
+	"EntryPointAssembly": "IceCream.dll",
+	"Dependencies": [
+		{
+			"UniqueName": "Nickel.Legacy",
+			"Version": "0.1.0"
+		}
+	]
+}

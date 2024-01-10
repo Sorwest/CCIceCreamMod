@@ -20,6 +20,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Update="nickel.json">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
+
+	<ItemGroup>
 		<Reference Update="CobaltCore">
 			<EmbedInteropTypes>False</EmbedInteropTypes>
 		</Reference>
